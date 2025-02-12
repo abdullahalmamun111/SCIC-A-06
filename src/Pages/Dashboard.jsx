@@ -16,32 +16,52 @@ const Dashboard = () => {
     switch (activeTab) {
       case "addMarathon":
        
-          return (
-            <div className="p-6 rounded-lg">
-              <AddMarathon />
-            </div>
-          );
-        
-      case "myMarathonList":
-          return (
-            <div className="bg-gray-100 p-6 rounded-lg shadow">
-              <Mymarathon />
-            </div>
-          );
-        
-      case "myApplyList":
-          return (
-            <div className="bg-gray-100 p-6 rounded-lg shadow">
-              <Myapply />
-            </div>
-          );
-        
-      default:
+      if(loading){
+        return <Loading></Loading>
+      }
+      else{
         return (
-          <div className="bg-gray-100 p-6 rounded-lg shadow">
-            Welcome to Dashboard
+          <div className="p-6 rounded-lg">
+            <AddMarathon />
           </div>
         );
+      }
+        
+      case "myMarathonList":
+          if(loading){
+            return <Loading></Loading>
+          }
+          else{
+            return (
+              <div className="bg-gray-100 p-6 rounded-lg shadow">
+                <Mymarathon />
+              </div>
+            );
+          }
+        
+      case "myApplyList":
+          if(loading){
+            return <Loading></Loading>
+          }
+          else{
+            return (
+              <div className="bg-gray-100 p-6 rounded-lg shadow">
+                <Myapply />
+              </div>
+            );
+          }
+        
+      default:
+          if(loading){
+            return <Loading></Loading>
+          }
+          else{
+            return (
+              <div className="bg-gray-100 p-6 rounded-lg shadow">
+                Welcome to Dashboard
+              </div>
+            );
+          }
     }
   };
 

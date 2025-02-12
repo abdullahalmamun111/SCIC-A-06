@@ -5,12 +5,14 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ThemeContext } from "../Components/ThemeProvider";
 
 const Mymarathon = () => {
   const navigate = useNavigate();
   const { user } = useContext(contextApi);
   const [userMarathon, setMarathon] = useState([]);
   const [id, setId] = useState(null);
+  const {theme} =useContext(ThemeContext)
   //   const [selectedMarathon, setSelectedMarathon] = useState(null); // For modal
 
   const [startRegDate, setStartRegDate] = useState(null);
@@ -110,12 +112,15 @@ const Mymarathon = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-50 min-h-screen">
+    <div 
+    // className="p-4 bg-gray-50 "
+    className={`${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"} p-4 min-h-screen`}
+    >
       <h1 className="text-3xl font-bold text-center mb-6 text-blue-600">
         My Marathons
       </h1>
       <div className="overflow-x-auto">
-        <table className="table-auto w-full border-collapse bg-white shadow-md rounded-lg overflow-hidden">
+        <table className="table-auto w-full border-collapse  shadow-md rounded-lg overflow-hidden">
           <thead className="bg-blue-500 text-white">
             <tr>
               <th className="px-4 py-2 text-left">Title</th>
@@ -131,7 +136,7 @@ const Mymarathon = () => {
               userMarathon.map((marathon) => (
                 <tr
                   key={marathon._id}
-                  className="hover:bg-gray-100 border-t border-gray-200"
+                  className=" border-t border-gray-200"
                 >
                   <td className="px-4 py-2">
                     <img

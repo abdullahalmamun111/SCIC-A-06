@@ -15,6 +15,7 @@ import ErrorPage from '../Pages/ErrorPage';
 import MyRaces from './MyRaces';
 import LearderBoard from './LearderBoard';
 import Contact from './Contact';
+import Mymarathon from '../Pages/Mymarathon';
 
 const router = createBrowserRouter([
 
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/my-races',
-                element: <PrivateRoute><MyRaces></MyRaces></PrivateRoute>
+                element: <PrivateRoute><Mymarathon></Mymarathon></PrivateRoute>
             },
             {
                 path:'/leaderboard',

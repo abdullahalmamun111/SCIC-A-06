@@ -1,8 +1,13 @@
 import React from "react";
+import { ThemeContext } from "./ThemeProvider";
 
 const MyRaces = () => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5">
+    <div 
+    // className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-5"
+    className={`${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"} py-10`}
+    >
       <div className="max-w-4xl w-full bg-white shadow-lg rounded-lg p-6">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
           My Races (Work in Progress)
