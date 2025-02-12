@@ -12,6 +12,9 @@ import AddMarathon from './AddMarathon';
 import Details from '../Pages/Details';
 import RegistrationPage from '../Pages/RegistrationPage';
 import ErrorPage from '../Pages/ErrorPage';
+import MyRaces from './MyRaces';
+import LearderBoard from './LearderBoard';
+import Contact from './Contact';
 
 const router = createBrowserRouter([
 
@@ -54,7 +57,20 @@ const router = createBrowserRouter([
                 path:'registration/:id',
                 element: <PrivateRoute><RegistrationPage></RegistrationPage></PrivateRoute>,
                 loader: ({params}) => fetch(`https://marathon-mangement-server.vercel.app/marathon/${params.id}`)
+            },
+            {
+                path:'/my-races',
+                element: <PrivateRoute><MyRaces></MyRaces></PrivateRoute>
+            },
+            {
+                path:'/leaderboard',
+                element: <PrivateRoute><LearderBoard></LearderBoard></PrivateRoute>
+            },
+            {
+                path:'/contact',
+                element: <PrivateRoute><Contact></Contact></PrivateRoute>
             }
+
         ]
     }
 ])

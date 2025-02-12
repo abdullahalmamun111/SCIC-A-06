@@ -7,9 +7,6 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
     const {user,loading} = useContext(contextApi);
 
-    if(loading){
-        return <Loading></Loading>
-    }
     if(user && user.email){
         return children;
     }

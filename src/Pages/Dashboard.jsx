@@ -15,35 +15,27 @@ const Dashboard = () => {
   const renderContent = () => {
     switch (activeTab) {
       case "addMarathon":
-        if (loading) {
-          return <Loading />;
-        } else {
+       
           return (
             <div className="p-6 rounded-lg">
               <AddMarathon />
             </div>
           );
-        }
+        
       case "myMarathonList":
-        if (loading) {
-          return <Loading />;
-        } else {
           return (
             <div className="bg-gray-100 p-6 rounded-lg shadow">
               <Mymarathon />
             </div>
           );
-        }
+        
       case "myApplyList":
-        if (loading) {
-          return <Loading />;
-        } else {
           return (
             <div className="bg-gray-100 p-6 rounded-lg shadow">
               <Myapply />
             </div>
           );
-        }
+        
       default:
         return (
           <div className="bg-gray-100 p-6 rounded-lg shadow">

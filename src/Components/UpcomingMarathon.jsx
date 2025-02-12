@@ -1,7 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { ThemeContext } from "./ThemeProvider";
+ // Import ThemeContext
 
 const UpcomingMarathon = () => {
+  const { theme } = useContext(ThemeContext);
+
   const events = [
     {
       id: 1,
@@ -78,15 +81,16 @@ const UpcomingMarathon = () => {
   ];
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <h1 className="text-4xl font-bold text-center text-blue-600 mb-10">
+    <div className={`${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-black"} p-6 min-h-screen`}>
+      <h1 className="text-4xl font-bold text-center text-blue-500 mb-10">
         Upcoming Marathons
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {events.map((item) => (
           <div
             key={item.id}
-            className="shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            className={`shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 
+            ${theme === "dark" ? "bg-gray-800 text-white" : "bg-white text-black"}`}
           >
             <div className="relative overflow-hidden group">
               <img
@@ -104,26 +108,24 @@ const UpcomingMarathon = () => {
                 <span className="text-purple-500 text-sm font-medium">
                   {item.category}
                 </span>
-                <span className="text-gray-500 text-xs">
+                <span className={`${theme === "dark" ? "text-gray-300" : "text-gray-500"} text-xs`}>
                   {item.comments} comments
                 </span>
               </div>
-              <h3 className="text-2xl font-semibold text-gray-800 mb-3">
+              <h3 className={`text-2xl font-semibold mb-3 ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
                 Location: {item.location}
               </h3>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">
+              <h3 className={`text-xl font-semibold mb-3 ${theme === "dark" ? "text-white" : "text-gray-800"}`}>
                 {item.title}
               </h3>
-              <h3 className="text-sm font-semibold text-gray-800 mb-3">
+              <h3 className={`text-sm font-semibold mb-3 ${theme === "dark" ? "text-gray-300" : "text-gray-800"}`}>
                 Registration Start: {item.regStartDate}
               </h3>
-              <p className="text-gray-600 text-sm line-clamp-3">
+              <p className={`${theme === "dark" ? "text-gray-400" : "text-gray-600"} text-sm line-clamp-3`}>
                 {item.description}
               </p>
-              <button>
-                <button className="mt-4 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors duration-300">
-                  See Details
-                </button>
+              <button className="mt-4 bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors duration-300">
+                See Details
               </button>
             </div>
           </div>

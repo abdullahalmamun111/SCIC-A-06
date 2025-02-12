@@ -3,11 +3,14 @@ import { contextApi } from "../AuthProvider/AuthContext";
 import MarathonCard from "../Components/MarathonCard";
 import Loading from "../Components/Loading";
 import { Helmet } from "react-helmet-async";
+import { ThemeContext } from "../Components/ThemeProvider";
 
 const Marathons = () => {
   const { loading } = useContext(contextApi);
   const [allmarathon, setAllmarathon] = useState([]);
   const [sortOrder, setSortOrder] = useState("desc");
+  const {theme} = useContext(ThemeContext)
+
 
   useEffect(() => {
     fetch(`https://marathon-mangement-server.vercel.app/allmarathon?sort=${sortOrder}`)
@@ -17,11 +20,8 @@ const Marathons = () => {
       });
   }, [sortOrder]);
 
-  if (loading) {
-    return <Loading></Loading>;
-  } else {
     return (
-      <div className="bg-gray-100 py-10">
+      <div className={`${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"} py-10`}>
         <Helmet>
           <title>All Marathons</title>
         </Helmet>
@@ -29,7 +29,8 @@ const Marathons = () => {
           <h1 className="text-4xl font-bold text-purple-500">All MARATHONS</h1>
           <h1 className="text-2xl font-bold my-2 text-gray-500">Sort By</h1>
           <select
-            className=" border border-gray-300 rounded px-4 py-2"
+            // className=" border border-gray-300 rounded px-4 py-2"
+            className={`${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"} border border-gray-300 rounded px-4 py-2`}
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
           >
@@ -44,7 +45,7 @@ const Marathons = () => {
         </div>
       </div>
     );
-  }
+  
 };
 
 export default Marathons;

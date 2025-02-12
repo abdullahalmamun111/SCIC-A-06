@@ -9,7 +9,7 @@ const MainLayout = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <main className="mt-20 mb-6 min-h-[50vh]">
+      <main className="mt-[68px]  min-h-[50vh]">
         <Outlet></Outlet>
       </main>
       <div><Footer></Footer></div>

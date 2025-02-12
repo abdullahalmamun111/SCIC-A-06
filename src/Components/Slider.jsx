@@ -15,6 +15,7 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { contextApi } from "../AuthProvider/AuthContext";
 import Loading from "./Loading";
+import { NavLink } from "react-router-dom";
 
 const Slider = () => {
   const { loading } = useContext(contextApi);
@@ -43,10 +44,6 @@ const Slider = () => {
     },
   ];
   
-
-  if (loading) {
-    return <Loading></Loading>;
-  } else {
     return (
       <>
         <Swiper
@@ -77,9 +74,11 @@ const Slider = () => {
                   <p className="text-white text-base md:text-lg mb-6">
                     {slide.description}
                   </p>
+                  <NavLink to={'/marathons'}>
                   <button className="bg-red-500 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-red-600 transition">
                     {slide.buttonText}
                   </button>
+                  </NavLink>
                 </div>
               </div>
             </SwiperSlide>
@@ -87,7 +86,7 @@ const Slider = () => {
         </Swiper>
       </>
     );
-  }
+  
 };
 
 export default Slider;

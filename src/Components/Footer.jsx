@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faTwitter, faInstagram, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
+import { ThemeContext } from "./ThemeProvider";
 
 const Footer = () => {
+  const {theme} = useContext(ThemeContext)
   return (
-    <footer className="bg-gradient-to-br from-teal-300 via-blue-200 to-gray-100 text-gray-800 py-10">
+    <footer 
+    // className="bg-gradient-to-br from-teal-300 via-blue-200 to-gray-100 text-gray-800 "
+    className={`${theme === "dark" ? "bg-gray-900 text-white" : "bg-gradient-to-br from-teal-300 via-blue-200 to-gray-100 text-gray-800"} py-10 `}
+    >
       <div className="container mx-auto px-4">
         {/* Top Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -20,11 +26,13 @@ const Footer = () => {
           <div>
             <h2 className="text-lg md:text-xl font-bold mb-4 text-teal-600">Quick Links</h2>
             <ul className="space-y-2 text-sm md:text-base text-gray-600">
-              <li>Home</li>
-              <li>Upcoming Marathons</li>
-              <li>Register for a Marathon</li>
-              <li>Marathon Tips</li>
-              <li>Contact Us</li>
+              <li><NavLink to="/" className="hover:text-teal-800">Home</NavLink></li>
+              <li><NavLink to="/marathons" className="hover:text-teal-800"> Marathons</NavLink></li>
+              <li><NavLink to="/marathons" className="hover:text-teal-800">Upcoming Marathons</NavLink></li>
+              <li><NavLink to="/register" className="hover:text-teal-800">Register for a Marathon</NavLink></li>
+              <li><NavLink to="/leaderboard" className="hover:text-teal-800">Marathon Tips</NavLink></li>
+              <li><NavLink to="/contact" className="hover:text-teal-800">Contact Us</NavLink></li>
+              <li><NavLink to="/dashboard" className="hover:text-teal-800">Dashboard</NavLink></li>
             </ul>
           </div>
 
@@ -32,10 +40,10 @@ const Footer = () => {
           <div>
             <h2 className="text-lg md:text-xl font-bold mb-4 text-teal-600">Support</h2>
             <ul className="space-y-2 text-sm md:text-base text-gray-600">
-              <li>Terms & Conditions</li>
-              <li>Privacy Policy</li>
-              <li>Help Center</li>
-              <li>Donation Guidelines</li>
+              <li><NavLink to="/terms" className="hover:text-teal-800">Terms & Conditions</NavLink></li>
+              <li><NavLink to="/privacy" className="hover:text-teal-800">Privacy Policy</NavLink></li>
+              <li><NavLink to="/help" className="hover:text-teal-800">Help Center</NavLink></li>
+              <li><NavLink to="/donations" className="hover:text-teal-800">Donation Guidelines</NavLink></li>
             </ul>
           </div>
 
@@ -66,25 +74,25 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center">
           {/* Social Media Icons */}
           <div className="flex space-x-4 mb-4 sm:mb-0">
-            <a href="https://www.facebook.com/" target="blank">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon
                 icon={faFacebookF}
                 className="text-xl text-teal-600 hover:text-teal-800 cursor-pointer"
               />
             </a>
-            <a href="https://twitter.com/" target="blank">
+            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon
                 icon={faTwitter}
                 className="text-xl text-teal-600 hover:text-teal-800 cursor-pointer"
               />
             </a>
-            <a href="https://www.instagram.com/" target="blank">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon
                 icon={faInstagram}
                 className="text-xl text-teal-600 hover:text-teal-800 cursor-pointer"
               />
             </a>
-            <a href="https://www.linkedin.com/" target="blank">
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon
                 icon={faLinkedinIn}
                 className="text-xl text-teal-600 hover:text-teal-800 cursor-pointer"

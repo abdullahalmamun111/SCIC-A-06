@@ -1,6 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { ThemeContext } from "./ThemeProvider";
 
 const SuccessStories = () => {
+
+  const {theme} = useContext(ThemeContext);
   const stories = [
     {
       id: 1,
@@ -60,7 +63,10 @@ const SuccessStories = () => {
   }, []);
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white">
+    <section 
+    // className="py-12 px-4 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white"
+    className={`${theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"} py-12 px-4 `}
+    >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center mb-8">
           Success Stories
